@@ -78,7 +78,7 @@ function addTask(task) {
 ul.addEventListener("click" , (e) => {
     const hasClass = e.target.classList.contains("check")
         if(hasClass){
-            const update = e.target.parentElement.getAttribute("id")
+            const update = parseInt(e.target.parentElement.getAttribute("id"))
             updateProductToLocalStorage(update , {completed : true})
             e.target.classList.toggle('circle')
             
