@@ -40,4 +40,5 @@ export {
     addProductToLocalStorage,
     updateProductToLocalStorage,
     deleteProductFromLocalStorage,
+    setProductsToLocalStorage
 }

@@ -3,6 +3,7 @@ import {
     addProductToLocalStorage,
     updateProductToLocalStorage,
     deleteProductFromLocalStorage,
+    setProductsToLocalStorage
 } from "./local-storage.js"
 
 
@@ -75,14 +76,39 @@ function addTask(task) {
     ul.appendChild(li)
     Input.value = ""
 }
+const today = new Date()
+    const result = today.toLocaleTimeString("en-US", {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: true,
+    });
+    const task = {
+        id: Date.now(),
+        title: inputValue,
+        completed: false,
+        createdAt: `${result}.${today.getDate()}/${today.getMonth() + 1}/${today.getFullYear()}`,
+
+    }
 ul.addEventListener("click" , (e) => {
     const hasClass = e.target.classList.contains("check")
         if(hasClass){
             const update = parseInt(e.target.parentElement.getAttribute("id"))
-            updateProductToLocalStorage(update , {completed : true})
+            updated(update)
             e.target.classList.toggle('circle')
             
         }
         
 })
+function updated(taskid){
+    for(let i = 0; i< tasks.length ; i++){
+        if(tasks[i].id == taskid){
+            tasks[i].completed == false ? (tasks[i].completed = true) : (tasks[i].completed = false)
+
+        }
+    }
+    setProductsToLocalStorage(tasks)
+    
+
+}
 
