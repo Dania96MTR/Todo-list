@@ -20,8 +20,7 @@ const updateProductToLocalStorage = (id, updatedDetails) => {
         if (currentProducts[i].id === id) {
              currentProducts[i] = {...currentProducts[i], ...updatedDetails}
             break 
-/*             currentProducts[i].completed == false ? (currentProducts[i].completed = true) : (currentProducts[i].completed)
- */        }
+        }
     }
     setProductsToLocalStorage(currentProducts)
 }
